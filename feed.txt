@@ -1,0 +1,227 @@
+<?php
+    $server_name="localhost";
+    $username="root";
+    $password="";
+    $db="mydata";
+
+    $conn=mysqli_connect($server_name,$username,$password,$db);
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+    //echo "Connected successfully";
+ ?>
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="script.js"></script>
+        
+        <title> 
+        FeedBack
+        </title>
+    </head>
+    <body>
+        <div class="container">
+            <!   Header  >
+    <div class="header"> 
+    <img name="logo" src="images/logo.JPG" alt="logo"/>  
+         <a href="index.php"><h1 class="webname"> AboutMobile.com </h1></a>
+        <ul class="list"> 
+            <li> <a href="index.php" > Home </a> </li>
+            <li> <a href="Contact.html"> Contact Us</a> </li>
+            <li><a href="FeedBack.html"  >  FeedBack </a> </li>
+             <li><a href="SignUp.php"  > Sign Up </a> </li>
+        </ul>
+      <!--  <input id="inp" name="search" type="text"/>
+        <button  id="button" onclick="myfunc()" >Search</button>-->
+    </div>
+            <div class="slider">
+                <center>
+           <img src="images/feedback.jpg"/>
+                    </center>
+            </div>
+        <div class="nav">
+            <table >
+                <th>
+                <b> Search by Network </b>
+                </th>    
+                <tr>
+                    <td> <a href=""3gmob.html />3G Network Mobiles
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="4gmob.html"> 4G Network Mobiles
+                    </td>
+                </tr>
+                <tr>
+                        <th><b> Search by Company </b>
+       </th>
+                </tr>
+                <tr>
+                    <td> <a href="Samsun.html"/> Samsung Mobiles
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="Lenovo.html"> Lenovo Mobiles
+                    </td>
+                </tr>
+                    <tr>
+                    <td> HTC Mobiles
+                    </td>
+                </tr>
+                    <tr>
+                    <td> LG Mobiles
+                    </td>
+                </tr>
+                    <tr>
+                    <td> Nokia Mobiles
+                    </td>
+                </tr>
+    
+                    <tr>
+                        <th><b> Search by Price </b>
+                    </th>
+                </tr>
+                <tr>
+                    <td> 5,000 - 10,000
+                    </td>
+                </tr>
+                <tr>
+                    <td> 10,000 - 15,000
+                    </td>
+                </tr>
+                    <tr>
+                    <td> 15,000 - 25,000
+                    </td>
+                </tr>
+                    <tr>
+                    <td> 25,000 - 35,000
+                    </td>
+                </tr>
+                    <tr>
+                    <td> above 35,000
+                    </td>
+                </tr>
+                <tr>
+                        <th><b> Search by Camera </b>
+                    </th>
+                </tr>
+                <tr>
+                    <td> 3 MPx
+                    </td>
+                </tr>
+                <tr>
+                    <td> 4 Mpx
+                    </td>
+                </tr>
+                    <tr>
+                    <td> 5 MPx
+                    </td>
+                </tr>
+                
+                    <tr>
+                    <td> 8 MPx
+                    </td>
+                </tr>
+                
+                    <tr>
+                    <td> 13 MPx
+                    </td>
+                </tr>   
+                    <tr>
+                        <th><b> Search by RAM </b>
+                    </th>
+                        </tr>
+                <tr>
+                    <td> 256 MB RAM
+                    </td>
+                </tr>
+                <tr>
+                    <td> 512 MB RAM
+                    </td>
+                </tr>
+                    <tr>
+                    <td> 1 GB RAM
+                    </td>
+                </tr>
+                    <tr>
+                    <td> 2 GB RAM
+                    </td>
+                </tr>
+                    <th><b> Search by OS </b>
+                    </th>
+                <tr>
+                    <td> Andriodd Mobile
+                    </td>
+                </tr>
+                <tr>
+                    <td> Windows Phone
+                    </td>
+                </tr>
+                    </table>
+                        </div>
+            <div class="feedback">
+            <h3> Please leave Your Comment! </h3>
+                <form id="form" name="form" action="" method="post">
+                    <table id="comtable">
+                        <tr>
+                        <td>  Name:
+                            </td>
+                        </tr>
+                        <tr>
+                        <td> <input id="name" name="name" type="text" required="required"/>
+                            </td>
+                        </tr>
+                        <tr>
+                        <td> UserName:
+                            </td>
+                        </tr>
+                        <tr>
+                        <td> <input id="username" name="username" type="text" required="required"/>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td> Email:
+                            </td>
+                        </tr>
+                        <tr>
+                        <td> <input id="Email" name="Email" type="email" required="required"/>
+                            </td>
+                        </tr>
+                    <tr> 
+                        <td>
+                        Comment!
+                        </td>
+                        </tr>
+                        <tr> 
+                        <td>
+                    <textarea name="comment" rows="10" cols="25" required="required"> </textarea>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" id="formbutton" name="formbutton" value="submit">    
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+                <?php
+                    $name=$_POST['name'];
+                    $username=$_POST['username'];
+                    $email=$_POST['Email'];
+                    $comment=$_POST['comment'];
+
+                    $query="insert into feedback (name , username , email , comment) values('$name' , '$username' , '$email' , '$comment')";
+                    if(isset($_POST['formbutton'])){
+                    mysqli_query($conn,$query);}
+                ?>
+
+            </div>
+            <div class="footer">
+              <p>  Copywrite @ 2016 AboutMobile.com </p> 
+            </div>
+        </div>
+    </body>
+</html>
